@@ -1,41 +1,80 @@
 {
-  "expo": {
-    "name": "naverMap",
-    "slug": "naverMap",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
+    "expo": {
+        "name": "naverMap",
+        "slug": "navermap",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/icon.png",
+        "scheme": "myapp",
+        "userInterfaceStyle": "automatic",
+        "newArchEnabled": true,
+        "platforms": ["ios", "android"],
+        "entryPoint": "./index.js",
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.navermap",
+            "infoPlist": {
+                "ITSAppUsesNonExemptEncryption": false
+            }
+        },
+        "android": {
+            "package": "com.navermap",
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "permissions": ["android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"]
+        },
+        "web": {
+            "bundler": "metro",
+            "output": "static",
+            "favicon": "./assets/images/favicon.png"
+        },
+        "plugins": [
+            [
+                "@mj-studio/react-native-naver-map",
+                {
+                    "client_id": "your client id",
+                    "android": {
+                        "ACCESS_FINE_LOCATION": true,
+                        "ACCESS_COARSE_LOCATION": true
+                    },
+                    "ios": {
+                        "NSLocationAlwaysUsageDescription": "앱이 위치를 항상 사용할 수 있도록 허용합니다.",
+                        "NSLocationWhenInUseUsageDescription": "앱이 실행될 때만 위치를 사용할 수 있도록 허용합니다."
+                    }
+                }
+            ],
+            "expo-router",
+            [
+                "expo-splash-screen",
+                {
+                    "image": "./assets/images/splash-icon.png",
+                    "imageWidth": 200,
+                    "resizeMode": "contain",
+                    "backgroundColor": "#ffffff"
+                }
+            ],
+            [
+                "expo-build-properties",
+                {
+                    "android": {
+                        "extraMavenRepos": ["https://repository.map.naver.com/archive/maven"]
+                    }
+                }
+            ]
+        ],
+        "experiments": {
+            "typedRoutes": true
+        },
+        "extra": {
+            "router": {
+                "origin": false
+            },
+            "eas": {
+                "projectId": "3432dbd0-3bd3-4645-bf82-6bee34be658b"
+            }
+        },
+        "owner": "gyulgyuri"
     }
-  }
 }

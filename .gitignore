@@ -3,6 +3,11 @@
 # dependencies
 node_modules/
 
+# 환경 변수 파일 (expo-config 방식 사용 시)
+.env
+
+# Expo 빌드 설정 중 민감한 정보가 포함될 수 있는 파일
+eas.json
 # Expo
 .expo/
 dist/
